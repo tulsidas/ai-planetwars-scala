@@ -20,8 +20,8 @@ object BullyBot {
         // (4) Send half the ships from my strongest planet to the weakest
         // planet that I do not own.
         if (source != null && dest != null) {
-            val numShips = source.numShips / 2;
-            pw.IssueOrder(source, dest, numShips);
+            val numShips = source.numShips / 2
+            pw.IssueOrder(source, dest, numShips)
         }
     }
 
@@ -30,7 +30,7 @@ object BullyBot {
         var message = ""
 
         try {
-            var c = System.in.read()
+            var c:Char = System.in.read().toChar
             while (c >= 0) {
                if (c == '\n') {
                     if (line.equals("go")) {
@@ -48,12 +48,12 @@ object BullyBot {
                     line += c
                 }
                 
-                c = System.in.read()
+                c = System.in.read().toChar
             }
         }
         catch {
             // Owned.
-            case _ => Unit
+            case e => println(e)
         }
     }
 }

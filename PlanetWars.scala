@@ -1,6 +1,8 @@
 class PlanetWars(gameStateString: String) {
    val planets = scala.collection.mutable.ListBuffer[Planet]()
    val fleets = scala.collection.mutable.ListBuffer[Fleet]()
+   
+   ParseGameState(gameStateString)
 
    def numPlanets = planets.size
    def getPlanet(id:Int) = planets(id)
@@ -35,8 +37,8 @@ class PlanetWars(gameStateString: String) {
     // * the ships will take a few turns to reach their destination. Travel
     // is not instant. See the Distance() function for more info.
     def IssueOrder(sourcePlanet:Int, destinationPlanet:Int, numShips:Int) {
-        System.out.println("" + sourcePlanet + " " + destinationPlanet + " " + numShips);
-        System.out.flush();
+        System.out.println("" + sourcePlanet + " " + destinationPlanet + " " + numShips)
+        System.out.flush()
     }
 
     // Sends an order to the game engine. An order is composed of a source
@@ -50,15 +52,15 @@ class PlanetWars(gameStateString: String) {
     // * the ships will take a few turns to reach their destination. Travel
     // is not instant. See the Distance() function for more info.
     def IssueOrder(source:Planet, dest:Planet, numShips:Int) {
-        System.out.println("" + source.id + " " + dest.id + " " + numShips);
-        System.out.flush();
+        System.out.println("" + source.id + " " + dest.id + " " + numShips)
+        System.out.flush()
     }
 
     // Sends the game engine a message to let it know that we're done sending
     // orders. This signifies the end of our turn.
     def FinishTurn() {
-        System.out.println("go");
-        System.out.flush();
+        System.out.println("go")
+        System.out.flush()
     }
 
    def isAlive(playerID:Int) = planets.count(_.owner == playerID) > 0 || fleets.count(_.owner == playerID) > 0
@@ -92,20 +94,20 @@ class PlanetWars(gameStateString: String) {
 
       val lines = s.split("\n")
       for (i <- 0 until lines.length) {
-         var line = lines(i);
-         val commentBegin = line.indexOf('#');
+         var line = lines(i)
+         val commentBegin = line.indexOf('#')
 
          if (commentBegin >= 0) {
-             line = line.substring(0, commentBegin);
+             line = line.substring(0, commentBegin)
          }
 
          if (line.trim().length() > 0) {
-            val tokens = line.split(" ");
+            val tokens = line.split(" ")
 
             if (tokens.length > 0) {
                if (tokens(0).equals("P")) {
                    if (tokens.length != 6) {
-                       return 0;
+                       return 0
                    }
 
                    val x = java.lang.Double.parseDouble(tokens(1))
@@ -120,7 +122,7 @@ class PlanetWars(gameStateString: String) {
                }
                else if (tokens(0).equals("F")) {
                    if (tokens.length != 7) {
-                       return 0;
+                       return 0
                    }
 
                    val owner = java.lang.Integer.parseInt(tokens(1))
@@ -133,12 +135,12 @@ class PlanetWars(gameStateString: String) {
                    fleets += new Fleet(owner, numShips, source, destination, totalTripLength, turnsRemaining)
                }
                else {
-                   return 0;
+                   return 0
                }
             }
          }
      }
 
-     return 1;
+     return 1
    }
 }

@@ -30,7 +30,7 @@ object ProspectorBot {
         var message = ""
 
         try {
-            var c = System.in.read()
+            var c:Char = System.in.read().toChar
             while (c >= 0) {
                if (c == '\n') {
                     if (line.equals("go")) {
@@ -48,12 +48,12 @@ object ProspectorBot {
                     line += c
                 }
                 
-                c = System.in.read()
+                c = System.in.read().toChar
             }
         }
         catch {
             // Owned.
-            case _ => Unit
+            case e => println(e)
         }
     }
 }

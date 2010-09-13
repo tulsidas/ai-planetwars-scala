@@ -1,3 +1,13 @@
 Scala starter package for Google Planet Wars AI contest
 
 http://ai-contest.com/
+
+Install Scala 2.8 (http://www.scala-lang.org/)
+
+To build:
+scalac *scala
+
+To test it:
+java -jar tools/PlayGame.jar maps/map1.txt 3000 3000 log.txt "scala MyBot" "scala MyBot" | java -jar tools/ShowGame.jar
+
+Keep in mind that the JVM may took more than 1 second to initialize on the first turn, hence test it with 2 or 3 seconds (the 3000 parameter above)
